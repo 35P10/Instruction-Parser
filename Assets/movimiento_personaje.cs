@@ -40,7 +40,6 @@ public class movimiento_personaje : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        Debug.Log(accionActual);
         if(accionActual=="none"){
             //idle animation
             animator.SetFloat("speed",0);
@@ -114,16 +113,21 @@ public class movimiento_personaje : MonoBehaviour
 
     public void reset(){
         AccionesEnEspera = new Queue<pair>();
-    }
-
-    private void onTriggerEnter2D(Collider2D col)
-    {
-        Debug.Log("Pum");
+        gameObject.transform.position = new Vector3(230, 65, 0);
     }
 
     public static float ToSingle(double value)
     {
-     return (float)value;
+        return (float)value;
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        gameObject.transform.position = new Vector3(230, 65, 0);
+    }
+
+
+
+
 
 }
